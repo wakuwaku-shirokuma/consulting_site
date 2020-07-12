@@ -4,15 +4,16 @@
 構築したい環境
 　MacOSにて構築を行う
 　Mac OS で Ruby on Rails 6.0、Ruby 2.7を起動させる。
+　DBはPostgresを使用する
 　rubyはrbenvでインストールを行う。
 
 現在の環境
+　Mac OS High Sierra バージョン10.13.6
+　homebrewは2.2.10がすでにインストールされている状態。
 　rubyは2.4.1と2.4.2がすでにインストールされている状態。
 　rbenvは1.1.2がインストールされている状態。
-　Mac OS High Sierra バージョン10.13.6
-　homebrewはインストール済。
-　rbenvもインストール済。
 　ruby-buildもインストール済。
+　postgresは12.2がすでにインストールされている状態。
 
 ★rbenvとruby-buildのバージョンアップデートに関して
   以下の記事を参考にさせて頂きました。
@@ -61,3 +62,106 @@
 ・railsのバージョンを確認する
   rails -v
   Rails 6.0.0
+
+・ここで、bundle initコマンドからGemfileを作成し、
+　そこからrailsやプロジェクトフォルダをインストールするべきだったことに気がついたので
+　gem uninstall rails -v 6.0.0を行う。
+
+・ここから
+　Gemfileの作成
+　　bundle init
+
+　Gemfile編集
+　　vi Gemfile
+
+　「Gemfileの中身」
+　　source "https://rubygems.org"
+　　gem "rails", "6.0.0"
+
+　railsをパスを指定してbundle install
+　　bundle install --path vendor/bundle
+
+   HEADS UP! i18n 1.1 changed fallbacks to exclude default locale.
+   But that may break your application.
+   If you are upgrading your Rails application from an older version of Rails:
+   Please check your Rails app for 'config.i18n.fallbacks = true'.
+   If you're using I18n (>= 1.1.0) and Rails (< 5.2.2), this should be
+   'config.i18n.fallbacks = [I18n.default_locale]'.
+   If not, fallbacks will be broken in your app by I18n 1.1.x.
+   If you are starting a NEW Rails application, you can ignore this notice.
+   For more info see:
+   https://github.com/svenfuchs/i18n/releases/tag/v1.1.0
+
+　railsプロジェクト作成
+　　bundle exec rails new . -d postgresql --skip-bundle
+
+　　--skip-bundleを指定しないとrails new時にbundle installが実行され、Ruby環境にgemがインストールされる
+　　-dオプション: 使用するDBMSを指定。
+
+   Overwrite ・・・/consulting_site/README.md? (enter "h" for help) [Ynaqdhm] h
+        Y - yes, overwrite
+        n - no, do not overwrite
+        a - all, overwrite this and all others
+        q - quit, abort
+        d - diff, show the differences between the old and the new
+        h - help, show this help
+        m - merge, run merge tool
+   Overwrite ・・・/consulting_site/README.md? (enter "h" for help) [Ynaqdhm] n
+        skip  README.md
+      create  Rakefile
+    identical  .ruby-version
+      create  config.ru
+      create  .gitignore
+    conflict  Gemfile
+    Overwrite ・・・consulting_site/Gemfile? (enter "h" for help) [Ynaqdhm] Y
+       force  Gemfile
+         run  git init from "."
+   Reinitialized existing Git repository in ・・・/consulting_site/.git/
+
+   Could not find gem 'pg (>= 0.18, < 2.0)' in any of the gem sources listed in your Gemfile.
+   Run `bundle install` to install missing gems.
+
+   postgresのバージョン（12.2）に合わせ、gemのpgをインストールする。
+ 　  gem install pg -v '0.18.0'
+
+　 rails server起動
+　   rails s
+　   しかし、さっきのエラーと同じエラーがまた出現してしまっている。
+
+　 bundle install
+   The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
+   Fetching gem metadata from https://rubygems.org/............
+   Fetching gem metadata from https://rubygems.org/.
+   Resolving dependencies...
+   Bundler could not find compatible versions for gem "sprockets":
+   In snapshot (Gemfile.lock):
+   sprockets (= 4.0.2)
+
+   In Gemfile:
+    sass-rails (~> 5) was resolved to 5.1.0, which depends on
+      sprockets (< 4.0, >= 2.8)
+
+  rails (~> 6.0.0) was resolved to 6.0.0, which depends on
+    sprockets-rails (>= 2.0.0) was resolved to 3.2.1, which depends on
+      sprockets (>= 3.0.0)
+
+  Running `bundle update` will rebuild your snapshot from scratch, using only
+    the gems in your Gemfile, which may resolve the conflict.
+
+  他のgemの依存関係を更新しないためにオプションをつけて更新
+  bundle update --source sprockets
+
+  Fetching sprockets 3.7.2 (was 4.0.2)
+  Installing sprockets 3.7.2 (was 4.0.2)
+
+  rails server起動
+　   rails s
+
+  => Booting Puma
+  => Rails 6.0.0 application starting in development
+  => Run `rails server --help` for more startup options
+
+  No such file or directory
+  @ rb_sysopen - ・・・consulting_site/config/webpacker.yml (Errno::ENOENT)
+
+  しかし、ここでwabpackerのエラーが出現する。
