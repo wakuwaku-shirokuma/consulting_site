@@ -31,13 +31,13 @@
   Downloading openssl-1.1.1d.tar.gz...
   -> https://dqw8nmjcqpjn7.cloudfront.net/1e3a91bc1f9dfce01af26026f856e064eab4c8ee0a8f457b5ae30b40b8b711f2
   Installing openssl-1.1.1d...
-  Installed openssl-1.1.1d to /Users/iwatahayato/.rbenv/versions/2.7.0
+  Installed openssl-1.1.1d to ・・・
 
   Downloading ruby-2.7.0.tar.bz2...
   -> https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.0.tar.bz2
   Installing ruby-2.7.0...
   ruby-build: using readline from homebrew
-  Installed ruby-2.7.0 to /Users/iwatahayato/.rbenv/versions/2.7.0
+  Installed ruby-2.7.0 to ・・・
 
 ・rbenvのバージョンを2.7.0に設定する
   rbenv local 2.7.0
@@ -231,7 +231,7 @@
 　　DETAIL:  The data directory was initialized by PostgreSQL version 10,
 　　　which is not compatible with this version 12.2.
 
-  iwatahayatonoMacBook-Air:consulting_site iwatahayato$ brew info postgresql
+  $ brew info postgresql
   postgresql: stable 12.3 (bottled), HEAD
   Object-relational database system
   https://www.postgresql.org/
@@ -275,4 +275,3 @@
 
   そして、もう一度サーバーを起動すると、
   「Yay! You’re on Rails!」が出力される。
-  
