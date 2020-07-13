@@ -14,6 +14,8 @@
 　rbenvは1.1.2がインストールされている状態。
 　ruby-buildもインストール済。
 　postgresは12.2がすでにインストールされている状態。
+　nodejsは6.12.3がインストールされている状態。
+　nodeのバージョン管理を行うために、nodebrewがインストールされている。
 
 ★rbenvとruby-buildのバージョンアップデートに関して
   以下の記事を参考にさせて頂きました。
@@ -165,3 +167,55 @@
   @ rb_sysopen - ・・・consulting_site/config/webpacker.yml (Errno::ENOENT)
 
   しかし、ここでwabpackerのエラーが出現する。
+  この原因は、webpackerがインストールされていないこと。
+  なので、webpackerのインストールを行う。
+
+  rails webpacker:install
+  Webpacker requires Node.js >= 8.16.0 and you are using 6.12.3
+  Please upgrade Node.js https://nodejs.org/en/download/
+
+  node.jsが必須でなおかつ8.16.0以上のバージョンが求められている。
+　そこで、node.jsの安定版の最新バージョンをnodebrewで行う。
+
+  nodebrew install-binary stable
+  ここで、v14.5.0がインストールされる。
+
+  nodebrewのバージョンを最新のものに変更する
+  nodebrew use latest
+  　use v14.5.0
+
+　もう一度、webpackerのインストールを行う
+　rails webpacker:install
+　　Yarn not installed. Please download and install Yarn from https://yarnpkg.com/lang/en/docs/install/
+
+　Yarnのインストールを行う
+　　brew install yarn --ignore-dependencies
+
+　Error: An exception occurred within a child process:
+　RuntimeError: /usr/local/opt/node not present or broken
+　Please reinstall node. Sorry :(
+
+  最新のnode使うようにシンボリックリンクを設置する。
+  mkdir /usr/local/opt/node
+  ln -s .nodebrew/current/ /usr/local/opt/node/
+
+  Yarnのインストールを行う
+  　brew install yarn --ignore-dependencies
+
+  Pruned 1 symbolic links and 6 directories from /usr/local
+
+  Yarnのバージョン確認をする
+　yarn -v
+　　1.22.4
+
+　もう一度、webpackerのインストールを行う
+　　rails webpacker:install
+
+  Webpacker successfully installed 🎉 🍰
+
+  
+
+
+
+
+　
