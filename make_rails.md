@@ -213,9 +213,66 @@
 
   Webpacker successfully installed 🎉 🍰
 
+  rails s
+  => Booting Puma
+  => Rails 6.0.0 application starting in development
+  => Run `rails server --help` for more startup options
+  Puma starting in single mode...
+  * Version 3.12.6 (ruby 2.7.0-p0), codename: Llamas in Pajamas
+  * Min threads: 5, max threads: 5
+  * Environment: development
+  * Listening on tcp://localhost:3000
+  Use Ctrl-C to stop
+
+  今度はブラウザで、PG::ConnectionBadのエラーが出現する
+  よく見ると、brew updateした際に
+　postgres -D /usr/local/var/postgres
+　　FATAL:  database files are incompatible with server
+　　DETAIL:  The data directory was initialized by PostgreSQL version 10,
+　　　which is not compatible with this version 12.2.
+
+  iwatahayatonoMacBook-Air:consulting_site iwatahayato$ brew info postgresql
+  postgresql: stable 12.3 (bottled), HEAD
+  Object-relational database system
+  https://www.postgresql.org/
+  /usr/local/Cellar/postgresql/12.2 (3,218 files, 36.9MB) *
+    Poured from bottle on 2020-03-16 at 19:58:15
+  From: https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/postgresql.rb
+  ==> Dependencies
+  Build: pkg-config ✘
+  Required: icu4c ✘, krb5 ✘, openssl@1.1 ✘, readline ✔
+  ==> Options
+  --HEAD
+  	Install HEAD version
+  ==> Caveats
+  To migrate existing data from a previous major version of PostgreSQL run:
+    brew postgresql-upgrade-database
+
+  To have launchd start postgresql now and restart at login:
+    brew services start postgresql
+  Or, if you don't want/need a background service you can just run:
+    pg_ctl -D /usr/local/var/postgres start
+  ==> Analytics
+  install: 133,208 (30 days), 492,816 (90 days), 1,221,076 (365 days)
+  install-on-request: 128,702 (30 days), 472,452 (90 days), 1,148,088 (365 days)
+  build-error: 0 (30 days)
+
+  なので、postgresを12.2にアップデートする。
+  brew postgresql-upgrade-database
+  ==> Upgraded postgresql data from 10 to 12!
+  ==> Your postgresql 10 data remains at /usr/local/var/postgres.old
+
+  postgresを起動させる
+  postgres -D /usr/local/var/postgres
+
+  するとデータベースに接続しようとしていることが確認できる
+  ActiveRecord::NoDatabaseError
+  FATAL: database "consulting_site_development" does not exist
+
+  ここでpostgresにログインし、DBを作成する
+  　psql -d postgres;
+  　CREATE DATABASE consulting_site_development OWNER postgres;
+
+  そして、もう一度サーバーを起動すると、
+  「Yay! You’re on Rails!」が出力される。
   
-
-
-
-
-　
