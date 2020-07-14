@@ -1,19 +1,14 @@
-設計まとめ
-
 必要なテーブルまとめ
 （ユーザー向け）
 　・user「使用者」
+
 　・chat「チャット」
-　・chat_room「チャットルーム」
-　・room「チャットルーム」
 　・chat_member「チャットメンバー」
 　・member「チャットメンバー」
-　・chat_fee「チャット参加料金」
-　・fee「チャット参加料金」
-　・chat_time「チャット時間」
-　・time「チャット時間」
+　・chat_schedule「チャット時間設定」
+　・schedule「チャット設定」
 　・chat_ticket「チャットチケット」
 　・ticket「チャットのためのチケット」
 　・chat_ticket_cart「チャットチケット購入用カート」
-　・About「このサイトについて」
+
 　・Inquiry「お問い合わせ」
