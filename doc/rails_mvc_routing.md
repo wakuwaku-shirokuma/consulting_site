@@ -82,3 +82,37 @@ staff →　[:admin, @staff]に。
 ３、staffと表記してあった「index.html.erb」を次のように変更
 <%= link_to 'Show', admin_staff_url(staff.id) %>
 <%= link_to 'Destroy', admin_staff_url(staff.id), method: :delete, data: { confirm: 'Are you sure?' }
+
+・ログイン画面（テキストフォームと新規登録ページへのリンクがあるもの）
+・Top画面（各種一覧ページへのリンクとログアウト機能があるもの）
+
+必要なのは、
+１、controller
+→→→1つ。
+２、view
+→→→2つ。（ログインページ）と（topページ）
+３、routes
+get 'admin/login' to: "admin/top#login" （ログインページ）
+get 'admin/top' to: "admin/top#index" （topページ）
+
+なので、
+bundle exec rails generate controller Top login index
+このコマンドを実行する。
+
+★★★★★★以下はマイグレーションで追加されたファイルの一覧★★★★★★
+create  app/controllers/top_controller.rb
+ route  get 'top/login'
+get 'top/index'
+invoke  erb
+create    app/views/top
+create    app/views/top/login.html.erb
+create    app/views/top/index.html.erb
+invoke  test_unit
+create    test/controllers/top_controller_test.rb
+invoke  helper
+create    app/helpers/top_helper.rb
+invoke    test_unit
+invoke  assets
+invoke    scss
+create      app/assets/stylesheets/top.scss
+★★★★★★以下はマイグレーションで追加されたファイルの一覧★★★★★★
