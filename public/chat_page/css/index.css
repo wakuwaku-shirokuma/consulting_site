@@ -9,60 +9,92 @@ p {
 }
 
 #chat_page {
-  position: absolute;
+  /*position: absolute;
   top: 0;
-  left: 0;
-  width: 1204px;
+  left: 0;*/
+  /*width: 1204px;*/
+  width: 100%;
   height: 1481px;
 }
 
 #header {
-  position: absolute;
+  /*position: absolute;
   top: 0;
-  left: 0;
-  width: 1203px;
+  left: 0;*/
+  /*width: 1203px;*/
+  width: 100%;
   height: 116px;
+  background-color: #d9d8d8;
 }
 
 #header_logo {
-  position: absolute;
+  /*position: absolute;
   top: 17px;
   left: 15px;
   width: 249px;
-  height: 83px;
+  height: 83px;*/
+  height: 116px;
+  /*width: 25%;
+  display: inline-block;*/
+  width: 22.5%;
+  display: table-cell;
+}
+
+#header_right_area {
+  /*height: 116px;
+  width: 74%;
+  display: inline-block;*/
+  /* height: 116px; */
+  width: 76.5%;
+  display: table-cell;
 }
 
 #header_logo_text {
-  position: absolute;
+  /*position: absolute;
   top: 24px;
   left: 89px;
   width: 73px;
   height: 33px;
-  font-size: 36px;
+  font-size: 36px;*/
+  font-size: 14px;
   font-weight: bold;
   color: #3F3F40;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 #header_link_area {
-  position: absolute;
+  /*position: absolute;
   top: 68px;
   left: 284px;
   width: 519px;
+  height: 30px;*/
+  /* position: absolute; */
+  /* top: 68px; */
+  /* left: 284px; */
+  width: 70%;
   height: 30px;
+  display: table-cell;
+  position: relative;
+  top: 70px;
 }
 
 #header_link_fee {
-  position: absolute;
+  /*position: absolute;
   top: 0;
-  left: 0;
+  left: 0;*/
   width: 79px;
   height: 30px;
+  display: inline-block;
 }
 
 #header_text_fee {
-  position: absolute;
+  /*position: absolute;
   top: 8px;
-  left: 25px;
+  left: 25px;*/
   width: 30px;
   height: 14px;
   font-size: 14px;
@@ -71,17 +103,18 @@ p {
 }
 
 #header_link_chat_list {
-  position: absolute;
+  /*position: absolute;
   top: 0;
-  left: 78px;
+  left: 78px;*/
   width: 136px;
   height: 30px;
+  display: inline-block;
 }
 
 #header_text_chat_list {
-  position: absolute;
+  /*position: absolute;
   top: 7px;
-  left: 22px;
+  left: 22px;*/
   width: 92px;
   height: 14px;
   font-size: 14px;
@@ -90,17 +123,18 @@ p {
 }
 
 #header_link_about {
-  position: absolute;
+  /*position: absolute;
   top: 0;
-  left: 213px;
+  left: 213px;*/
   width: 179px;
   height: 30px;
+  display: inline-block;
 }
 
 #header_text_about {
-  position: absolute;
+  /*position: absolute;
   top: 7px;
-  left: 21px;
+  left: 21px;*/
   width: 138px;
   height: 13px;
   font-size: 14px;
@@ -109,17 +143,18 @@ p {
 }
 
 #header_link_inquiry {
-  position: absolute;
+  /*position: absolute;
   top: 0;
-  left: 391px;
+  left: 391px;*/
   width: 128px;
   height: 30px;
+  display: inline-block;
 }
 
 #header_text_inquiry {
-  position: absolute;
+  /*position: absolute;
   top: 8px;
-  left: 18px;
+  left: 18px;*/
   width: 92px;
   height: 14px;
   font-size: 14px;
@@ -128,25 +163,35 @@ p {
 }
 
 #header_radio_area {
-  position: absolute;
+  /*position: absolute;
   top: 72px;
   left: 943px;
   width: 238px;
+  height: 22px;/*
+  position: absolute; */
+  /* top: 72px; */
+  /* left: 943px; */
+  width: 238px;
   height: 22px;
+  display: table-cell;
+  position: relative;
+  top: 70px;
+  left: 55%;
 }
 
 #login_radio_button {
-  position: absolute;
+  /*position: absolute;
   top: 0;
-  left: 0;
+  left: 0;*/
   width: 103px;
   height: 22px;
+  display: inline-block;
 }
 
 #login_text {
-  position: absolute;
+  /*position: absolute;
   top: 4px;
-  left: 44px;
+  left: 44px;*/
   width: 59px;
   height: 14px;
   font-size: 14px;
@@ -155,17 +200,18 @@ p {
 }
 
 #logout_radio_button {
-  position: absolute;
+  /*position: absolute;
   top: 0;
-  left: 120px;
+  left: 120px;*/
   width: 118px;
   height: 22px;
+  display: inline-block;
 }
 
 #logout_text {
-  position: absolute;
+  /*position: absolute;
   top: 4px;
-  left: 44px;
+  left: 44px;*/
   width: 74px;
   height: 14px;
   font-size: 14px;
