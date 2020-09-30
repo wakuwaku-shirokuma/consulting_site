@@ -32,7 +32,7 @@
 ・フロント画面
 （Topページ「ログインページ」）
 その１、https://codepen.io/colorlib/pen/rxddKy（コーディング済み）
-その２、
+その２、https://codepen.io/taniarascia/pen/dYvvYv（コーディング済み）
 
 （入力ページ、確認ページ、登録完了ページ「会員登録ページ」）
 その１、https://codepen.io/jaycbrf/pen/iBszr（未実装）
@@ -49,6 +49,7 @@
 その２、https://codepen.io/ajaypatelaj/pen/zIBjJ（未実装）
 その３、https://codepen.io/codyhouse/pen/gvqJa（未実装）
 その４、https://codepen.io/littlesnippets/pen/gPOwXa（未実装）
+その５、https://codepen.io/taniarascia/pen/dYvvYv（コーディング済み）
 
 （チャット詳細ページ）
 その１、https://codepen.io/kathykato/pen/gdvjax（未実装）
