@@ -11,7 +11,7 @@ export default class MainLogin extends Component {
         <p>Find me in app/views/admin/login.html.erb</p>
         <p>
           <a href="/admin/top">管理画面の一覧ページへ</a>
-        </p>  
+        </p>
       </div>
     );
   }
